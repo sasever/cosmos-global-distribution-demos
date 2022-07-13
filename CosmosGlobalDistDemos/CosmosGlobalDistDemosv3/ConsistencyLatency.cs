@@ -10,9 +10,9 @@ namespace CosmosGlobalDistDemosCore
         * Resources needed for this demo:
         * 
         * 
-        *   Eventual => Cosmos DB account: Replication: Single-Master, Write Region: West US 2, Read Region: Central US, Consistency: Eventual
-        *   Strong 1K Miles => Cosmos DB account: Replication: Single-Master, Write Region: West US 2, Read Region: Central US, Consistency: Strong
-        *   Strong 2K Miles => Cosmos DB account: Replication: Single-Master, Write Region: West US 2, Read Region: East US 2, Consistency: Strong
+        *   Eventual => Cosmos DB account: Replication: Single-Master, Write Region: Norway East, Read Region: North Europe, Consistency: Eventual
+        *   Strong 1K Miles => Cosmos DB account: Replication: Single-Master, Write Region: Norway East, Read Region: North Europe, Consistency: Strong
+        *   Strong 2K Miles => Cosmos DB account: Replication: Single-Master, Write Region: Norway East, Read Region: Switzerland North, Consistency: Strong
         *   
     */
     class ConsistencyLatency
@@ -32,8 +32,8 @@ namespace CosmosGlobalDistDemosCore
                     new Benchmark
                     {
                         benchmarkType = BenchmarkType.Write,
-                        testName = "Eventual 1000 miles",
-                        testDescription = $"Test 100 Writes against account with Eventual Consistency in West US 2 replicated to Central US",
+                        testName = "Eventual 1000 KM",
+                        testDescription = $"Test 100 Writes against account with Eventual Consistency in Norway East replicated to North Europe",
                         testRegion = configuration["testRegion"],
                         targetRegion = configuration["EventualReplicaRegion"],
                         endpoint = configuration["EventualEndpoint"],
@@ -49,8 +49,8 @@ namespace CosmosGlobalDistDemosCore
                     new Benchmark
                     {
                         benchmarkType = BenchmarkType.Write,
-                        testName = "Strong 1000 miles",
-                        testDescription = $"Test 100 Writes against account with Strong Consistency in West US 2 replicated to Central US",
+                        testName = "Strong 1000 KM",
+                        testDescription = $"Test 100 Writes against account with Strong Consistency in Norway East replicated to North Europe",
                         testRegion = configuration["testRegion"],
                         targetRegion = configuration["Strong1kMilesReplicaRegion"],
                         endpoint = configuration["Strong1kMilesEndpoint"],
@@ -66,8 +66,8 @@ namespace CosmosGlobalDistDemosCore
                     new Benchmark
                     {
                         benchmarkType = BenchmarkType.Write,
-                        testName = "Strong 2000 miles",
-                        testDescription = $"Test 100 Writes against account with Strong Consistency in West US 2 replicated to East US 2",
+                        testName = "Strong 2000 KM",
+                        testDescription = $"Test 100 Writes against account with Strong Consistency in Norway East replicated to Switzerland North",
                         testRegion = configuration["testRegion"],
                         targetRegion = configuration["Strong2kMilesReplicaRegion"],
                         endpoint = configuration["Strong2kMilesEndpoint"],

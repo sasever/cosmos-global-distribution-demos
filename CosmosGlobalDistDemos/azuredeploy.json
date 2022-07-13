@@ -12,9 +12,9 @@
   "variables": {
     "singleRegionEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-read-single-region'))]",
     "multiRegionEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-read-multi-region'))]",
-    "eventualEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-eventual-1kmiles'))]",
-    "strong1kMilesEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-strong-1kmiles'))]",
-    "strong2kMilesEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-strong-2kmiles'))]",
+    "eventualEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-eventual-1000kms'))]",
+    "strong1000KMEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-strong-1000km'))]",
+    "strong2000KMEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-strong-2000km'))]",
     "singleMasterEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-write-single-master'))]",
     "multiMasterEndpoint": "[toLower(concat(parameters('cosmosAccountPrefix'), '-write-multi-master'))]"
   },
@@ -24,7 +24,7 @@
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
       "name": "[variables('singleRegionEndpoint')]",
-      "location": "West US 2",
+      "location": "Norway East",
       "properties": {
         "name": "[variables('singleRegionEndpoint')]",
         "databaseAccountOfferType": "Standard",
@@ -33,7 +33,7 @@
         },
         "locations": [
           {
-            "locationName": "East US 2",
+            "locationName": "Switzerland North",
             "failoverPriority": 0
           }
         ]
@@ -44,7 +44,7 @@
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
       "name": "[variables('multiRegionEndpoint')]",
-      "location": "West US 2",
+      "location": "Norway East",
       "properties": {
         "name": "[variables('multiRegionEndpoint')]",
         "databaseAccountOfferType": "Standard",
@@ -53,11 +53,11 @@
         },
         "locations": [
           {
-            "locationName": "East US 2",
+            "locationName": "Switzerland North",
             "failoverPriority": 0
           },
           {
-            "locationName": "West US 2",
+            "locationName": "Norway East",
             "failoverPriority": 1
           }
         ]
@@ -68,7 +68,7 @@
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
       "name": "[variables('eventualEndpoint')]",
-      "location": "West US 2",
+      "location": "Norway East",
       "properties": {
         "name": "[variables('eventualEndpoint')]",
         "databaseAccountOfferType": "Standard",
@@ -77,11 +77,11 @@
         },
         "locations": [
           {
-            "locationName": "West US 2",
+            "locationName": "Norway East",
             "failoverPriority": 0
           },
           {
-            "locationName": "Central US",
+            "locationName": "North Europe",
             "failoverPriority": 1
           }
         ]
@@ -91,21 +91,21 @@
       "apiVersion": "2021-01-15",
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
-      "name": "[variables('strong1kMilesEndpoint')]",
-      "location": "West US 2",
+      "name": "[variables('strong1000KMEndpoint')]",
+      "location": "Norway East",
       "properties": {
-        "name": "[variables('strong1kMilesEndpoint')]",
+        "name": "[variables('strong1000KMEndpoint')]",
         "databaseAccountOfferType": "Standard",
         "consistencyPolicy": {
           "defaultConsistencyLevel": "Strong"
         },
         "locations": [
           {
-            "locationName": "West US 2",
+            "locationName": "Norway East",
             "failoverPriority": 0
           },
           {
-            "locationName": "Central US",
+            "locationName": "North Europe",
             "failoverPriority": 1
           }
         ]
@@ -115,21 +115,21 @@
       "apiVersion": "2021-01-15",
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
-      "name": "[variables('strong2kMilesEndpoint')]",
-      "location": "West US 2",
+      "name": "[variables('strong2000KMEndpoint')]",
+      "location": "Norway East",
       "properties": {
-        "name": "[variables('strong2kMilesEndpoint')]",
+        "name": "[variables('strong2000KMEndpoint')]",
         "databaseAccountOfferType": "Standard",
         "consistencyPolicy": {
           "defaultConsistencyLevel": "Strong"
         },
         "locations": [
           {
-            "locationName": "West US 2",
+            "locationName": "Norway East",
             "failoverPriority": 0
           },
           {
-            "locationName": "East US 2",
+            "locationName": "Switzerland North",
             "failoverPriority": 1
           }
         ]
@@ -140,7 +140,7 @@
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
       "name": "[variables('singleMasterEndpoint')]",
-      "location": "West US 2",
+      "location": "Norway East",
       "properties": {
         "name": "[variables('singleMasterEndpoint')]",
         "databaseAccountOfferType": "Standard",
@@ -149,11 +149,11 @@
         },
         "locations": [
           {
-            "locationName": "East US 2",
+            "locationName": "Switzerland North",
             "failoverPriority": 0
           },
           {
-            "locationName": "West US 2",
+            "locationName": "Norway East",
             "failoverPriority": 1
           }
         ]
@@ -164,7 +164,7 @@
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
       "name": "[variables('multiMasterEndpoint')]",
-      "location": "West US 2",
+      "location": "Norway East",
       "properties": {
         "name": "[variables('multiMasterEndpoint')]",
         "databaseAccountOfferType": "Standard",
@@ -174,11 +174,11 @@
         "enableMultipleWriteLocations": true,
         "locations": [
           {
-            "locationName": "East US 2",
+            "locationName": "Switzerland North",
             "failoverPriority": 0
           },
           {
-            "locationName": "West US 2",
+            "locationName": "Norway East",
             "failoverPriority": 1
           },
           {
@@ -214,21 +214,21 @@
       "type": "string",
       "value": "[listkeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('eventualEndpoint')), '2021-01-15').primaryMasterKey]"
     },
-    "Strong1kMilesEndpoint": {
+    "Strong1000KMEndpoint": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong1kMilesEndpoint')), '2021-01-15').documentEndpoint]"
+      "value": "[reference(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong1000KMEndpoint')), '2021-01-15').documentEndpoint]"
     },
-    "Strong1kMilesKey": {
+    "Strong1000KMKey": {
       "type": "string",
-      "value": "[listkeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong1kMilesEndpoint')), '2021-01-15').primaryMasterKey]"
+      "value": "[listkeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong1000KMEndpoint')), '2021-01-15').primaryMasterKey]"
     },
-    "Strong2kMilesEndpoint": {
+    "Strong2000KMEndpoint": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong2kMilesEndpoint')), '2021-01-15').documentEndpoint]"
+      "value": "[reference(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong2000KMEndpoint')), '2021-01-15').documentEndpoint]"
     },
-    "Strong2kMilesKey": {
+    "Strong2000KMKey": {
       "type": "string",
-      "value": "[listkeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong2kMilesEndpoint')), '2021-01-15').primaryMasterKey]"
+      "value": "[listkeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('strong2000KMEndpoint')), '2021-01-15').primaryMasterKey]"
     },
     "SingleMasterEndpoint": {
       "type": "string",
